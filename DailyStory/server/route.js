@@ -67,4 +67,26 @@ router.delete("/deleteById/:id",(req,res)=>{
     }
 })
 
+//Update API
+router.put("/updateById/:id",(req,res)=>{
+    const {id} = req.params;
+    const data = req.body;
+    try{
+        connection.query("Update dailystories.stories SET ? WHERE id =?",[data,id],(error,response)=>{
+            if(error)
+            {
+                res.status(422).json(error);
+            }
+            else
+            {
+                res.status(200).json(response);
+            }
+        })
+    }
+    catch(error)
+    {
+        res.status(422).json(error);
+    }
+})
+
 module.exports = router;

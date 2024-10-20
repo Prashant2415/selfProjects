@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import "../components/index.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const DailyStories = () => {
     const [stories, setStories] = useState([]);
-    
+    const navigate = useNavigate();
     //Get stories data API call
     const getStoriesData = async () => {
         const response = await axios.get("http://localhost:5000/getStories").then((res) => {
@@ -22,7 +22,13 @@ const DailyStories = () => {
             }
         }).then((res)=> {console.log(res)}).catch((error)=>{console.log(error)})
         window.location.reload();
-    } 
+    }
+
+    //handle update
+    const handleUpdate =(story)=>{
+        console.log(story)
+        navigate("/updatePage",{state: story})
+    }
 
     useEffect(() => {
         getStoriesData();
@@ -46,7 +52,7 @@ const DailyStories = () => {
                                     <p className='display-description'>{s.description}</p>
                                 </div>
                                 <div className='display-button-container'>
-                                    <button className='display-button'>View</button>
+                                    <button className='display-button' onClick={()=>{handleUpdate(s)}}>View</button>
                                     <button className='display-button' onClick={()=>{handleDeleteSpecific(s.id)}}>Delete</button>
                                 </div>
                             </div>

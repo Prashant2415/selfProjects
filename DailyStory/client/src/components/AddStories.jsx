@@ -16,16 +16,7 @@ const AddStories = () => {
     event.preventDefault();
     setDetails([...details, storyInput])
     const { title, description } = storyInput;
-
-    // const response = await fetch("http://localhost:5000/saveStory", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     title, description
-    //   })
-    // });
+    
     const response = await axios.post("http://localhost:5000/saveStory",{title,description},{
       headers:{
         "Content-Type": "application/json"
