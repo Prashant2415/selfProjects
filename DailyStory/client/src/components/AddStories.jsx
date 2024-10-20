@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "../components/index.css"
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const AddStories = () => {
   const [storyInput, setStoryInput] = useState({ title: "", description: "" });
   const [details, setDetails] = useState([]);
@@ -31,6 +31,9 @@ const AddStories = () => {
       <div className='sub-container'>
         <div className='title-container'>
           <h1 className='title'>Add Stories</h1>
+        </div>
+        <div className='button-container'>
+          <Link className='back-button' to="/">Back</Link>
         </div>
         <div className='input-container'>
           <div className='input-display'>

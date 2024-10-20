@@ -15,19 +15,24 @@ const DailyStories = () => {
     }
 
     //handle delete specific
-    const handleDeleteSpecific =async(id)=>{
-        const response = await axios.delete(`http://localhost:5000/deleteById/${id}`,{
+    const handleDeleteSpecific = async (id) => {
+        const response = await axios.delete(`http://localhost:5000/deleteById/${id}`, {
             headers: {
                 "Content-Type": "application/json"
             }
-        }).then((res)=> {console.log(res)}).catch((error)=>{console.log(error)})
+        }).then((res) => { console.log(res) }).catch((error) => { console.log(error) })
         window.location.reload();
     }
 
     //handle update
-    const handleUpdate =(story)=>{
+    const handleUpdate = (story) => {
         console.log(story)
-        navigate("/updatePage",{state: story})
+        navigate("/updatePage", { state: story })
+    }
+
+    //handle view
+    const handleView =(story)=>{
+        navigate("/viewStory",{state : story})
     }
 
     useEffect(() => {
@@ -52,8 +57,9 @@ const DailyStories = () => {
                                     <p className='display-description'>{s.description}</p>
                                 </div>
                                 <div className='display-button-container'>
-                                    <button className='display-button' onClick={()=>{handleUpdate(s)}}>View</button>
-                                    <button className='display-button' onClick={()=>{handleDeleteSpecific(s.id)}}>Delete</button>
+                                    <button className='display-button' onClick={() => { handleView(s) }}>View</button>
+                                    <button className='display-button' onClick={() => { handleUpdate(s) }}>Update</button>
+                                    <button className='display-button' onClick={() => { handleDeleteSpecific(s.id) }}>Delete</button>
                                 </div>
                             </div>
                         )

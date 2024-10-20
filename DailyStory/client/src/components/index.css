@@ -38,6 +38,7 @@ body{
 }
 .display-container{
     width: 80%;
+    height: 10rem;
 }
 .display-values{
     background: burlywood;
@@ -52,9 +53,14 @@ body{
 .display-description{
     overflow: hidden;
     text-overflow: ellipsis;
+    height: 100%;
 }
 .display-inner-values{
     width: 98%;
+    height: 6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1rem;
 }
 
 
@@ -103,6 +109,42 @@ body{
     font-weight: 600;
 }
 .display-button:hover{
+    background: #000000;
+    color: #ffffff;
+}
+.form-button-container{
+    display: flex;
+    gap: 1rem;
+}
+.view-container{
+    font-size: 18px;
+    width: 90%;
+    font-family: sans-serif;
+    background: burlywood;
+    border-left: 5px solid;
+}
+.view-inner-container{
+    padding: 1rem;
+}
+.view-title{
+
+}
+.view-description{
+
+}
+.back-button{
+    border-radius: 1rem;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    background: lightgray;
+    color: #000;
+    text-decoration: none;
+    padding: 0.5rem;
+    border: 1px solid;
+}
+.back-button:hover{
     background: #000000;
     color: #ffffff;
 }
