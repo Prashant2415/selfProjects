@@ -92,3 +92,17 @@ body{
     background: #000000;
     color: #ffffff;
 }
+.display-button-container{
+    display: flex;
+    gap: 1rem;
+}
+.display-button{
+    padding: 7.5px;
+    border-radius: 1rem;
+    font-size: 14px;
+    font-weight: 600;
+}
+.display-button:hover{
+    background: #000000;
+    color: #ffffff;
+}

@@ -46,4 +46,25 @@ router.get("/getStories",(req,res)=>{
     }
 })
 
+//DELETE API based on id
+router.delete("/deleteById/:id",(req,res)=>{
+    const {id} = req.params;
+    try{
+        connection.query("DELETE from dailystories.stories WHERE id= ?",id,(error,response)=>{
+            if(error)
+            {
+                res.status(422).json(error);
+            }
+            else
+            {
+                res.status(200).json(response);
+            }
+        })
+    }
+    catch(error)
+    {
+        res.status(422).json(error);
+    }
+})
+
 module.exports = router;

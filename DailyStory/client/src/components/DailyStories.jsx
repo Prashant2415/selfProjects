@@ -14,6 +14,16 @@ const DailyStories = () => {
             .catch((error) => { console.log("Error ", error) })
     }
 
+    //handle delete specific
+    const handleDeleteSpecific =async(id)=>{
+        const response = await axios.delete(`http://localhost:5000/deleteById/${id}`,{
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((res)=> {console.log(res)}).catch((error)=>{console.log(error)})
+        window.location.reload();
+    } 
+
     useEffect(() => {
         getStoriesData();
     }, [])
@@ -34,6 +44,10 @@ const DailyStories = () => {
                                 <div className='display-inner-values'>
                                     <h2 className='display-title'>{s.title}</h2>
                                     <p className='display-description'>{s.description}</p>
+                                </div>
+                                <div className='display-button-container'>
+                                    <button className='display-button'>View</button>
+                                    <button className='display-button' onClick={()=>{handleDeleteSpecific(s.id)}}>Delete</button>
                                 </div>
                             </div>
                         )
