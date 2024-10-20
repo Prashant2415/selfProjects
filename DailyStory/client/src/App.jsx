@@ -5,6 +5,7 @@ import AddStories from './components/AddStories'
 import UpdateStory from './components/UpdateStory'
 import ViewStory from './components/ViewStory'
 import Header from './components/Header'
+import Footer from './components/Footer'
 function App() {
 
   return (

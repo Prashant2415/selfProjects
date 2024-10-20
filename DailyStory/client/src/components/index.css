@@ -4,6 +4,9 @@ body{
 
 .container{
     padding: 2rem;
+    min-height: 30rem;
+    /* overflow-y: scroll;
+    margin-bottom: 2rem; */
 }
 .sub-container{
 
