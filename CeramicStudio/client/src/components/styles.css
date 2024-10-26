@@ -1,0 +1,94 @@
+.container{
+    padding: 1rem;
+}
+.main-container{
+
+}
+.top-header{
+    display: flex;
+    align-items: center;
+    gap: 40rem;
+}
+.logo-container{
+
+}
+.logo{
+    width: 5rem;
+    height: 5rem;
+    mix-blend-mode: darken;
+    cursor: pointer;
+}
+.header-menu-container{
+    display: flex;
+    gap: 3rem;
+}
+.menu-links{
+    cursor: pointer;
+    width: 5rem;
+    display: flex;
+    justify-content: center;
+}
+.menu-links:hover{
+    color: gray;
+}
+.carousel-container{
+    position: relative;
+    width: 90rem;
+    height: 24rem;
+    padding: 1rem;
+}
+.carousel-image{
+    height: 100%;
+}
+.carousel{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.carousel-inner-text{
+    position: absolute;
+    top: 9rem;
+    left: 35rem;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff;
+}
+.carousel-text{
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 6px;
+    margin-bottom: 2rem;
+}
+.shop-now-button{
+    width: 7rem;
+    padding: 0.5rem;
+    border: none;
+    background: #000000;
+    color: #ffffff;
+    margin: 0rem 0rem 0rem 8rem;
+    font-weight: 700;
+}
+.shop-now-button:hover{
+    color: #000000;
+    background: #ffffff;
+}
+.our-collection-container{
+    padding: 1rem;
+    
+}
+.our-collection{
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+.our-collection-heading{
+    display: flex;
+    justify-content: center;
+}
+.our-collection-text{
+    display: flex;
+    justify-content: center;
+    width: 50rem;
+    margin-left: 23rem;
+}
