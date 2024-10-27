@@ -254,3 +254,55 @@
     grid-template-columns: repeat(auto-fill, minmax(361px, 1fr));
     width: 50rem;
 }
+.item-container{
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+    margin-top: 5rem;
+}
+.main-item{
+    display: flex;
+    gap: 2rem;
+}
+.image-item{
+
+}
+.image-url{
+
+}
+.item-detail{
+    width: 30rem;
+}
+.item-title{
+
+}
+.item-price{
+
+}
+.item-description{
+
+}
+.button{
+    width: 10rem;
+    padding: 0.5rem;
+    font-size: 16px;
+    font-weight: 600;
+}
+.add-to-card{
+    margin-bottom: 0.5rem;
+    background: rgb(0, 0, 0, 0);
+    border: 1px solid;
+    color: #000000;
+}
+.buy-now-button{
+    background: #000000;
+}
+.add-to-card:hover, .buy-now-button:hover{
+    background: gray;
+    color: #000000;
+}
+.main-item-container{
+    padding: 1rem;
+    margin-top: -2rem;
+}
+

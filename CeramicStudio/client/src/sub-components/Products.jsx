@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "../components/styles.css"
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -8,6 +8,7 @@ const Products = () => {
   const [product, setProduct] = useState([]);
   const [categoryProducts, setCategoryProducts] = useState([]);
   const [categoryFlag, setCategoryFlag] = useState(false);
+  const navigate = useNavigate();
   //getallproduct api
   const getallproduct = async () => {
     const response = axios.get("http://localhost:8081/getAllProducts").then((res) => {
@@ -39,6 +40,11 @@ const Products = () => {
         setCategoryProducts(res.data);
       }).catch((error) => { console.log(error) })
   }
+
+  const handleProductById =(productDetails)=>{
+    console.log(productDetails);
+    navigate("/productItem",{state: productDetails})
+  }
   useEffect(() => {
     getallproduct();
   }, [])
@@ -58,7 +64,7 @@ const Products = () => {
           {categoryFlag === true ? (
             <div className='product-card-container'>
               {categoryProducts.map((p) => (
-                <div className='product-card' key={p.id}>
+                <div className='product-card' key={p.id} onClick={()=>{handleProductById(p)}}>
                   <div className='product-image'>
                     <img className='p-image' src={`../src/images/${p.imageurl}.webp`} alt='{p.productname}' />
                   </div>
@@ -73,7 +79,7 @@ const Products = () => {
           ) : (
             <div className='product-card-container'>
               {product.map((p) => (
-                <div className='product-card' key={p.id}>
+                <div className='product-card' key={p.id} onClick={()=>{handleProductById(p)}}>
                   <div className='product-image'>
                     <img className='p-image' src={`../src/images/${p.imageurl}.webp`} alt='{p.productname}' />
                   </div>
