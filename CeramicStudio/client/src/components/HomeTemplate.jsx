@@ -6,6 +6,7 @@ import OurCollection from './OurCollection'
 import ProductCollection from './ProductCollection'
 import ContactUs from './ContactUs'
 import Footer from './Footer'
+import {Link} from "react-router-dom"
 const HomeTemplate = () => {
     
     return (
@@ -15,11 +16,11 @@ const HomeTemplate = () => {
                     <img className='logo' src={logo} alt='logo image' />
                 </div>
                 <div className='header-menu-container'>
-                    <a className='menu-links'>Home</a>
-                    <a className='menu-links'>Shop</a>
-                    <a className='menu-links'>About</a>
-                    <a className='menu-links'>Gift Card</a>
-                    <a className='menu-links'>Contact</a>
+                    <Link to="" className='menu-links'>Home</Link>
+                    <Link to="/products" className='menu-links'>Shop</Link>
+                    <Link to="" className='menu-links'>About</Link>
+                    <Link to="" className='menu-links'>Gift Card</Link>
+                    <Link to="" className='menu-links'>Contact</Link>
                 </div>
             </div>
             <div className='main-container'>

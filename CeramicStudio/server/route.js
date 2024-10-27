@@ -49,5 +49,26 @@ router.get("/getAllProducts",(req,res)=>{
     }
 })
 
+//get product by category
+router.get("/category/:category",(req,res)=>{
+    const {category} = req.params;
+    try 
+    {
+        connection.query("SELECT * FROM ceramicstudio.products WHERE category=?",category,(error, result)=>{
+            if(error)
+            {
+                res.status(422).json(error);
+            }
+            else
+            {
+                res.status(200).json(result);
+            }
+        })
+    } 
+    catch(error) 
+    {
+        res.status(422).json(error);
+    }
+})
 
 module.exports = router;

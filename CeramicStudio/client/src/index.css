@@ -1,3 +1,6 @@
+#root{
+  width: 100%;
+}
 :root {
   /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
   line-height: 1.5;
@@ -14,7 +17,7 @@
   font-family: "Oxanium", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-
+  
 }
 
 
