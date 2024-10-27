@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import { Link } from 'react-router-dom';
+import "../components/styles.css"
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 const Products = () => {
   const [product, setProduct] = useState([]);
   const [categoryProducts, setCategoryProducts] = useState([]);
@@ -41,6 +44,7 @@ const Products = () => {
   }, [])
   return (
     <div className='product'>
+      <Header/>
       <div className='product-inner-container'>
         <div className='filter-container'>
           <h3 className='browse-by'>Browse By</h3>
@@ -84,6 +88,7 @@ const Products = () => {
           )}
         </div>
       </div>
+      <Footer/>
     </div >
   )
 }

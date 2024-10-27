@@ -147,7 +147,7 @@
     gap: 20rem;
 }
 .contact-description{
-
+    padding: 1rem;
 }
 .contact-info-one{
     
@@ -199,7 +199,7 @@
     color: #000000;
 }
 .footer-container{
-    padding: 0rem 1rem 1rem 1rem;
+    padding: 0rem 1rem 0rem 1rem;
     
 }
 .footer-content{
@@ -212,10 +212,12 @@
 }
 .product{
     padding: 1rem;
+    margin-top: -1rem;
 }
 .product-inner-container{
     display: flex;
     gap: 5rem;
+    margin-top: 6rem;
 }
 .filter-container{
     width: 20%;
