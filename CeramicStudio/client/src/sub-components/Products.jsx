@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import "../components/styles.css"
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { CommonBackButton } from '../components/commonComponents/Common';
 const Products = () => {
   const [product, setProduct] = useState([]);
   const [categoryProducts, setCategoryProducts] = useState([]);
@@ -21,36 +22,34 @@ const Products = () => {
   const handleBrowseByCategory = async (event) => {
     console.log("event ", event.target.innerText);
     var categoryValue = event.target.innerText;
-      const response = axios.get(`http://localhost:8081/category/${categoryValue}`, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).then((res) => {
-        console.log(res.data)
-        if(categoryValue === "All Products")
-        {
-          setCategoryFlag(false);
-          setCategoryProducts(product);
-        }
-        else if(categoryValue === "Cup" || categoryValue === "Bottle" || categoryValue === "Plate")
-        {
-          setCategoryFlag(true);
-          setCategoryProducts(res.data);
-        }
+    const response = axios.get(`http://localhost:8081/category/${categoryValue}`, {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then((res) => {
+      console.log(res.data)
+      if (categoryValue === "All Products") {
+        setCategoryFlag(false);
+        setCategoryProducts(product);
+      }
+      else if (categoryValue === "Cup" || categoryValue === "Bottle" || categoryValue === "Plate") {
+        setCategoryFlag(true);
         setCategoryProducts(res.data);
-      }).catch((error) => { console.log(error) })
+      }
+      setCategoryProducts(res.data);
+    }).catch((error) => { console.log(error) })
   }
 
-  const handleProductById =(productDetails)=>{
+  const handleProductById = (productDetails) => {
     console.log(productDetails);
-    navigate("/productItem",{state: productDetails})
+    navigate("/productItem", { state: productDetails })
   }
   useEffect(() => {
     getallproduct();
   }, [])
   return (
     <div className='product'>
-      <Header/>
+      <Header />
       <div className='product-inner-container'>
         <div className='filter-container'>
           <h3 className='browse-by'>Browse By</h3>
@@ -60,11 +59,12 @@ const Products = () => {
           <button onClick={handleBrowseByCategory} className='browser-category'>Plate</button>
         </div>
         <div className='product-diplay'>
+        <CommonBackButton>Back</CommonBackButton>
           <h3 className='product-title-heading'>All Products</h3>
           {categoryFlag === true ? (
             <div className='product-card-container'>
               {categoryProducts.map((p) => (
-                <div className='product-card' key={p.id} onClick={()=>{handleProductById(p)}}>
+                <div className='product-card' key={p.id} onClick={() => { handleProductById(p) }}>
                   <div className='product-image'>
                     <img className='p-image' src={`../src/images/${p.imageurl}.webp`} alt='{p.productname}' />
                   </div>
@@ -79,7 +79,7 @@ const Products = () => {
           ) : (
             <div className='product-card-container'>
               {product.map((p) => (
-                <div className='product-card' key={p.id} onClick={()=>{handleProductById(p)}}>
+                <div className='product-card' key={p.id} onClick={() => { handleProductById(p) }}>
                   <div className='product-image'>
                     <img className='p-image' src={`../src/images/${p.imageurl}.webp`} alt='{p.productname}' />
                   </div>
@@ -94,7 +94,7 @@ const Products = () => {
           )}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div >
   )
 }
