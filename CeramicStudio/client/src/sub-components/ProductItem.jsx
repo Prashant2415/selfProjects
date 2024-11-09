@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import "../components/styles.css"
 import Header from '../components/Header';
 import { CommonBackButton, CommonTitlePara } from '../components/commonComponents/Common';
+import axios from "axios";
 const ProductItem = () => {
     const value = useLocation();
     const {id, productname , description , imageurl, category, price} = value.state;
+    var quantity = 1;
     const policyData = [
       {
         title: "Product Info",
@@ -20,6 +22,16 @@ const ProductItem = () => {
         para: "I'm a shipping policy. I'm a great place to add more information about your shipping methods, packaging and cost. Providing straightforward information about your shipping policy is a great way to build trust and reassure your customers that they can buy from you with confidence."
       }
     ]
+
+    const handleAddToCart = async()=>{
+      const response = await axios.post("http://localhost:8081/addtocart",{productname, description, category, quantity,imageurl},
+        {
+          headers:{
+            "Content-Type": "application/json"
+          }
+        }
+    ).then((res)=> {console.log(res)}).catch((error)=>{console.log(error)})
+    }
   return (
    <div className='main-item-container'>
     <div>
@@ -35,7 +47,7 @@ const ProductItem = () => {
             <h3 className='item-title'>{productname}</h3>
             <p className='item-price'>{price}</p>
             <p className='item-description'>{description}</p>
-            <button className='button add-to-card'>Add to Cart</button>
+            <button className='button add-to-card' onClick={handleAddToCart}>Add to Cart</button>
             <br/>
             <button className='button buy-now-button'>Buy Now</button>
         </div>

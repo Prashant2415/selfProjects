@@ -324,3 +324,25 @@
     display: flex;
     gap: 2rem;
 }
+.cart-main-container{
+    width: 30rem;
+    float: right;
+    border: 1px solid;
+}
+.cart-heading-container{
+    background: #000000;
+    color: #ffffff;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 22rem;
+}
+.cross-icon{
+
+}
+.cart-heading{
+
+}
+.cart-value-container{
+
+}

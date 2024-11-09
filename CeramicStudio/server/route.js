@@ -71,4 +71,52 @@ router.get("/category/:category",(req,res)=>{
     }
 })
 
+//add to cart API calls
+router.post("/addtocart",(req,res)=>{
+    const {productname, description, category, quantity,imageurl} = req.body;
+    console.log(req.body);
+    if(!productname || !description || !category || !quantity || !imageurl)
+    {
+        res.status(422).json("Please enter the fields")
+    }
+    try 
+    {
+        connection.query("INSERT INTO ceramicstudio.cart SET ?",{productname, description, category, quantity,imageurl},(error,result)=>{
+            if(error)
+            {
+                res.status(422).json(error)
+            }
+            else
+            {
+                res.status(201).json(result)
+            }
+        })
+    } 
+    catch 
+    (error) 
+    {
+        res.status(422).json(error)    
+    }
+})
+
+//get all cart data
+router.get("/getAllCartDetails",(req,res)=>{
+    try{
+        connection.query("SELECT * FROM ceramicstudio.cart",(error,result)=>{
+            if(error)
+            {
+                res.status(422).json(error);
+            }
+            else
+            {
+                res.status(200).json(result);
+            }
+        })
+    }
+    catch(error)
+    {
+        res.status(422).json(error);
+    }
+})
+
 module.exports = router;
