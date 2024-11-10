@@ -1,0 +1,74 @@
+.header-container{
+    background: bisque;
+}
+.logo-container{
+
+}
+.logo-image{
+    width: 5rem;
+    height: 5rem;
+    mix-blend-mode: darken;
+    cursor: pointer;
+}
+.container{
+    display: flex;
+    gap: 2rem;
+}
+.main-container{
+    width: 40%;
+}
+.add-new-story{
+    padding: 1rem;
+    width: 100%;
+}
+.add.new-story-button{
+
+}
+.display-stories-container{
+    padding: 1rem;
+    width: 100%;
+    height: 40rem;
+    overflow-y: auto;
+}
+.display-stories{
+    border-bottom: 1px solid;
+}
+.display-subject{
+    font-size: 18px;
+    font-weight: 700;
+    font-family: Verdana;
+}
+.display-text{
+    font-family: Verdana;
+    height: 5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.view-button{
+    margin-bottom: 0.5rem;
+}
+.display-add-display-view-container{
+    padding: 1rem;
+    background: navajowhite;
+    width: 50%;
+
+}
+.add-new-story-container{
+
+}
+.story-form{
+
+}
+.form-label{
+    font-size: 18px;
+    font-weight: 700;
+}
+.form-input-subject, .form-input-date{
+    padding: 0.5rem;
+    margin: 1rem 0rem;
+    width: 30%;
+}
+
+.form-input-story{
+
+}
