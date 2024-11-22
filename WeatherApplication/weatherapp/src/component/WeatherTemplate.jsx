@@ -48,17 +48,18 @@ const WeatherTemplate = () => {
         "cod": 200
     }]
     const [city, setCity] = useState(""||"Jabalpur");
-    const [cityDetails, setCityDetails] = useState(sample[0]);
-    // const getWeatherDetails = async () => {
-    //     const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=11a2ddd68979258cf66328666b2cbac7`).then((res) => {
-    //         setCityDetails(res?.data);
-    //         console.log(res.data)
-    //     }).catch((error) => { console.log(error) })
-    // }
-    // useEffect(() => {
-    //     getWeatherDetails();
-    // }, [])
-
+    const [cityDetails, setCityDetails] = useState([]);
+    const [dsample, setSample] = useState(cityDetails);
+    const getWeatherDetails = async () => {
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=11a2ddd68979258cf66328666b2cbac7`).then((res) => {
+            setCityDetails(res?.data);
+            console.log(res.data)
+        }).catch((error) => { console.log(error) })
+    }
+    useEffect(() => {
+        getWeatherDetails();
+    }, [])
+    console.log(dsample)
     
     
     const weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -75,9 +76,8 @@ const WeatherTemplate = () => {
     
     const location = cityDetails?.name;
     const temperature = (cityDetails?.main?.temp - 273.15)?.toFixed(0);
-    const description = cityDetails?.weather[0]?.description;
-    const icon = cityDetails?.weather[0]?.icon;
-    
+    // const description = cityDetails?.weather[0]?.description;
+    // const icon = cityDetails?.weather[0]?.icon;
     const wind = cityDetails?.wind?.speed;
     const humadity = cityDetails?.main?.humidity;
     const feel = (cityDetails?.main?.feels_like - 273.15).toFixed(0);
@@ -164,9 +164,9 @@ const WeatherTemplate = () => {
                     </button>
                 </div>
                 <div className='weather-details'>
-                    <img className='weather-image' src={`http://openweathermap.org/img/w/${icon}.png`} alt='weather-image' />
+                    {/* <img className='weather-image' src={`http://openweathermap.org/img/w/${icon}.png`} alt='weather-image' /> */}
                     <h1 className='weather-temp'>{temperature}<span>&#8451;</span></h1>
-                    <p className='weather-description'>{description}</p>
+                    {/* <p className='weather-description'>{description}</p> */}
                     <div className='partition'></div>
                     <div className='date-container'>
                         <p className='current-date'>{currentDate}</p>
