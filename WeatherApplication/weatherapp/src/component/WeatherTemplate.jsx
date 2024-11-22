@@ -3,17 +3,61 @@ import "../component/Weather.css";
 import axios from "axios";
 const WeatherTemplate = () => {
 
+    const sample = [{
+        "coord": {
+            "lon": 79.9501,
+            "lat": 23.167
+        },
+        "weather": [
+            {
+                "id": 800,
+                "main": "Clear",
+                "description": "clear sky",
+                "icon": "01n"
+            }
+        ],
+        "base": "stations",
+        "main": {
+            "temp": 287.15,
+            "feels_like": 285.91,
+            "temp_min": 287.15,
+            "temp_max": 287.15,
+            "pressure": 1015,
+            "humidity": 50,
+            "sea_level": 1015,
+            "grnd_level": 968
+        },
+        "visibility": 10000,
+        "wind": {
+            "speed": 1.83,
+            "deg": 68,
+            "gust": 1.83
+        },
+        "clouds": {
+            "all": 0
+        },
+        "dt": 1732299280,
+        "sys": {
+            "country": "IN",
+            "sunrise": 1732237130,
+            "sunset": 1732276455
+        },
+        "timezone": 19800,
+        "id": 1269633,
+        "name": "Jabalpur",
+        "cod": 200
+    }]
     const [city, setCity] = useState(""||"Jabalpur");
-    const [cityDetails, setCityDetails] = useState([]);
-    const getWeatherDetails = async () => {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=11a2ddd68979258cf66328666b2cbac7`).then((res) => {
-            setCityDetails(res.data);
-            console.log(res.data)
-        }).catch((error) => { console.log(error) })
-    }
-    useEffect(() => {
-        getWeatherDetails();
-    }, [])
+    const [cityDetails, setCityDetails] = useState(sample[0]);
+    // const getWeatherDetails = async () => {
+    //     const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=11a2ddd68979258cf66328666b2cbac7`).then((res) => {
+    //         setCityDetails(res?.data);
+    //         console.log(res.data)
+    //     }).catch((error) => { console.log(error) })
+    // }
+    // useEffect(() => {
+    //     getWeatherDetails();
+    // }, [])
 
     
     
@@ -34,6 +78,18 @@ const WeatherTemplate = () => {
     const description = cityDetails?.weather[0]?.description;
     const icon = cityDetails?.weather[0]?.icon;
     
+    const wind = cityDetails?.wind?.speed;
+    const humadity = cityDetails?.main?.humidity;
+    const feel = (cityDetails?.main?.feels_like - 273.15).toFixed(0);
+    const pressure = cityDetails?.main?.pressure;
+    const clouds = cityDetails?.clouds?.all;
+    const tempMax = cityDetails?.main?.temp_max;
+    const tempMin = cityDetails?.main?.temp_min;
+    const sunRise = cityDetails?.sys?.sunrise;
+    const sunSet = cityDetails?.sys?.sunset;
+    const lat = cityDetails?.coord?.lat;
+    const lon = cityDetails?.coord?.lon;
+    const timezone = cityDetails?.timezone;
     const handleSearchInput = async()=>{
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=11a2ddd68979258cf66328666b2cbac7`).then((res) => {
             setCityDetails(res.data);
@@ -43,28 +99,55 @@ const WeatherTemplate = () => {
     const dummy = [
         {
             name: "Wind",
+            value: `${wind} km/h`,
+            max: "null",
+            min: "null"
         },
         {
             name: "Humadity",
+            value: `${humadity}%`,
+            max: "null",
+            min: "null"
         },
         {
-            name: "Pressure",
+            name: "Real Feels",
+            value: `${feel} Degree`,
+            max: "null",
+            min: "null"
         },{
-            name: "Wind",
-        },
-        {
-            name: "Humadity",
-        },
-        {
             name: "Pressure",
+            value: `${pressure} mb`,
+            max: "null",
+            min: "null"
+        },
+        {
+            name: "Chance of rain",
+            value: clouds,
+            max: "null",
+            min: "null"
+        },
+        {
+            name: "Temperature History",
+            value: "",
+            max: `Max: ${(tempMax - 273.15).toFixed(0)}`,
+            min: `Min: ${(tempMin - 273.15).toFixed(0)}`
         },{
-            name: "Wind",
+            name: "Sun",
+            value: "",
+            max: `Sunrise: ${sunRise}`,
+            min: `Sunset: ${sunSet}`
         },
         {
-            name: "Humadity",
+            name: "Timezone",
+            value: timezone,
+            max: "null",
+            min: "null"
         },
         {
-            name: "Pressure",
+            name: "Coord",
+            value: "",
+            max: `Lat: ${lat}`,
+            min: `Lon: ${lon}`
         },
         
     ]
@@ -94,11 +177,21 @@ const WeatherTemplate = () => {
                 </div>
             </div>
             <div className='weather-specification-container'>
+                <h3 className='heading-day'>Today</h3>
                 <div className='specification-container'>
                 {dummy.map((d,index)=>{
                     return(
                         <div className='card-container' key={index}>
-                            <p>{d.name}</p>
+                            <p className='p-tag'>{d.name}</p>
+                            <p className='p-tag'>{d.value}</p>
+                            {d.max === "null" && d.min === "null" ? (
+                                <></>
+                            ) : (
+                                <div>
+                                    <p className='p-tag'>{d.max}</p>
+                                    <p className='p-tag'>{d.min}</p>
+                                </div>
+                            )}
                         </div>
                     )
                 })}
